@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Project SECURITY</title>
+    <title>Vaults SECURITY</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/favicon.png">
     <meta charset="utf-8">
@@ -21,9 +21,7 @@
         <footer>
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10">
-                    <p>Protected by <strong><a
-                                href="https://codecanyon.net/item/project-security-website-security-antivirus-firewall/15487703?ref=Antonov_WEB"
-                                target="_blank">Project SECURITY</a></strong></p>
+                    <p>Protected by <strong>Vaults Security</strong></p>
                 </div>
             </div>
         </footer>

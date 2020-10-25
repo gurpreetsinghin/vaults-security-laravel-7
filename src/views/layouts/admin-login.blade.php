@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 		<meta name="theme-color" content="#000000">
-        <title>Project SECURITY &rsaquo; Admin Panel</title>
+        <title>Vaults SECURITY &rsaquo; Admin Login</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">

@@ -8,7 +8,7 @@ use Gurpreetsinghin\VaultsSecurity\Traits\Core;
 use Gurpreetsinghin\VaultsSecurity\Traits\Config;
 use Gurpreetsinghin\VaultsSecurity\Traits\VaultsSecurity;
 
-class ProjectSecurityServiceProvider extends ServiceProvider
+class VaultsSecurityServiceProvider extends ServiceProvider
 {
 
 
@@ -72,7 +72,7 @@ class ProjectSecurityServiceProvider extends ServiceProvider
 
         // if(isset($_SERVER['HTTP_HOST'])){
         //     $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        //     if (strpos($actual_link, url('/project-security')) === false) {
+        //     if (strpos($actual_link, url('/vaults-security')) === false) {
         //         // dd('dsssd');
         //         $this->securityCheck();
         //     }

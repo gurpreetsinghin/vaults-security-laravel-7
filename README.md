@@ -2,11 +2,11 @@
 ## Steps to install
 1. Include the following line in config/app.php
 ```php
-Gurpreetsinghin\VaultsSecurity\ProjectSecurityServiceProvider::class,
+Gurpreetsinghin\VaultsSecurity\VaultsSecurityServiceProvider::class,
 ```
 2. Publish the vendor first.
 ```php
-php artisan vendor:publish --provider="Gurpreetsinghin\VaultsSecurity\ProjectSecurityServiceProvider"
+php artisan vendor:publish --provider="Gurpreetsinghin\VaultsSecurity\VaultsSecurityServiceProvider"
 ```
 3. Run Migration
 ```bash

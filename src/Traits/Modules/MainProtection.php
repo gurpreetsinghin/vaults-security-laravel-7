@@ -158,7 +158,7 @@ Trait MainProtection{
             
             if ($sqlisetting->protection6 == 1) {
                 //Hide PHP Version
-                @header('X-Powered-By: Project SECURITY');
+                @header('X-Powered-By: Vaults Security');
             }
             
             if ($sqlisetting->protection7 == 1) {

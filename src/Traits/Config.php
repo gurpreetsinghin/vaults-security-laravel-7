@@ -12,8 +12,8 @@ trait Config {
         return url('/');
     }
 
-    public function projectsecurity_path(){
-        return url('/project-security');
+    public function vaultssecurity_path(){
+        return url('/vaults-security');
     }
 
     public function current_url(){

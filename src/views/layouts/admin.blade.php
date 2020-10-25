@@ -8,7 +8,7 @@
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <meta name="theme-color" content="#000000">
     <link rel="shortcut icon" href="assets/img/favicon.png">
-    <title>Project SECURITY &rsaquo; Admin Panel</title>
+    <title>Vaults SECURITY &rsaquo; Admin Panel</title>
 
 
     <!--STYLESHEET-->
