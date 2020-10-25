@@ -128,46 +128,47 @@ Trait MainProtection{
     }
 
     public function sqli_protection(){
-        $setting = DB::table($this->prefix().'sqli-settings')->first();
+        $sqlisetting = DB::table($this->prefix().'sqli-settings')->first();
+        $setting = DB::table($this->prefix().'settings')->first();
 
-        if ($setting->protection == 1) {
+        if ($sqlisetting->protection == 1) {
     
             //XSS Protection - Block infected requests
             //@header("X-XSS-Protection: 1; mode=block");
             
-            if ($setting->protection2 == 1) {
+            if ($sqlisetting->protection2 == 1) {
                 //XSS Protection - Sanitize infected requests
                 @header("X-XSS-Protection: 1");
             }
             
-            if ($setting->protection3 == 1) {
+            if ($sqlisetting->protection3 == 1) {
                 //Clickjacking Protection
                 @header("X-Frame-Options: sameorigin");
             }
             
-            if ($setting->protection4 == 1) {
+            if ($sqlisetting->protection4 == 1) {
                 //Prevents attacks based on MIME-type mismatch
                 @header("X-Content-Type-Options: nosniff");
             }
             
-            if ($setting->protection5 == 1) {
+            if ($sqlisetting->protection5 == 1) {
                 //Force secure connection
                 @header("Strict-Transport-Security: max-age=15552000; preload");
             }
             
-            if ($setting->protection6 == 1) {
+            if ($sqlisetting->protection6 == 1) {
                 //Hide PHP Version
                 @header('X-Powered-By: Project SECURITY');
             }
             
-            if ($setting->protection7 == 1) {
+            if ($sqlisetting->protection7 == 1) {
                 //Sanitization of all fields and requests
                 $_GET     = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
                 $_POST    = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             }
 
             //Data Sanitization
-            if ($setting->protection8 == 1) {
+            if ($sqlisetting->protection8 == 1) {
 
                 $_POST    = $this->sanitize($_POST);
                 $_GET     = $this->sanitize($_GET);
@@ -240,29 +241,27 @@ Trait MainProtection{
                     $type   = "SQLi";
                     
                     //Logging
-                    if ($setting->logging == 1) {
+                    if ($sqlisetting->logging == 1) {
                         $this->psec_logging($type);
                     }
                     
                     //AutoBan
-                    if ($setting->autoban == 1) {
-                        psec_autoban($type);
+                    if ($sqlisetting->autoban == 1) {
+                        $this->psec_autoban($type);
                     }
-                    
+                    // dd($sqlisetting);
                     //E-Mail Notification
-                    if ($setting->mail_notifications == 1 && $setting->mail == 1) {
-                        psec_mail($mysqli, $prefix, $site_url, $projectsecurity_path, $type);
+                    if ($setting->mail_notifications == 1 && $sqlisetting->mail == 1) {
+                        $this->psec_mail($type);
                     }
                     
-                    if($this->url_match($setting->redirect)){
-                        echo '<meta http-equiv="refresh" content="0;url=' . $setting->redirect . '" />';
+                    if($this->url_match($sqlisetting->redirect)){
+                        echo '<meta http-equiv="refresh" content="0;url=' . $sqlisetting->redirect . '" />';
                         exit;
                     }
                 }
             }
-
         }
-        
     }
 
     public function cleanInput($input){

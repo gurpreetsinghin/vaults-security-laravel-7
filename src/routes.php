@@ -11,9 +11,9 @@ Route::group(['prefix' => 'vaults-security', 'namespace' => 'Gurpreetsinghin\Vau
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
-        Route::any('install', 'AuthController@addUser')->name('ps.admin.install');
-        Route::any('login', 'AuthController@login')->name('ps.admin.login');
-        Route::get('logout', 'AuthController@logout')->name('ps.admin.logout');
+        Route::name('ps.admin.install')->any('install', 'AuthController@addUser');
+        Route::name('ps.admin.login')->any('login', 'AuthController@login');
+        Route::name('ps.admin.logout')->get('logout', 'AuthController@logout');
 
         Route::group(['middleware' => ['web', 'auth:project-security-admin']], function(){
             Route::get('dashboard', 'MainController@dashboard')->name('ps.admin.dashboard');

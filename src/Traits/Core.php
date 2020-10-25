@@ -6,6 +6,7 @@ use Gurpreetsinghin\VaultsSecurity\Traits\Config;
 use DB;
 use Auth;
 use \Gurpreetsinghin\VaultsSecurity\Traits\Lib\UserAgentFactoryPSec;
+use Illuminate\Support\Facades\Mail;
 
 trait Core {
 
@@ -223,19 +224,19 @@ trait Core {
 
         $useragent = $this->userAgentData();
         $setting = $this->getSetting();
-        
+        // dd($setting);
         $email   = 'notifications@' . $_SERVER['SERVER_NAME'] . '';
         $to      = $setting->email;
         $subject = 'Project SECURITY - ' . $type . '';
-        $message = '
+        $messagee = '
                         <p style="padding:0; margin:0 0 11pt 0;line-height:160%; font-size:18px;">Details of Log - ' . $type . '</p>
                         <p>IP Address: <strong>' . $this->getIP() . '</strong></p>
-                        <p>Date: <strong>' . $useragent[date] . '</strong> at <strong>' . $useragent[time] . '</strong></p>
-                        <p>Browser:  <strong>' . $useragent[browser] . '</strong></p>
-                        <p>Operating System:  <strong>' . $useragent[os] . '</strong></p>
+                        <p>Date: <strong>' . $useragent['date'] . '</strong> at <strong>' . $useragent['time'] . '</strong></p>
+                        <p>Browser:  <strong>' . $useragent['browser'] . '</strong></p>
+                        <p>Operating System:  <strong>' . $useragent['os'] . '</strong></p>
                         <p>Threat Type:  <strong>' . $type . '</strong> </p>
-                        <p>Page:  <strong>' . $useragent[page] . '</strong> </p>
-                        <p>Referer URL:  <strong>' . $useragent[referer] . '</strong> </p>
+                        <p>Page:  <strong>' . $useragent['page'] . '</strong> </p>
+                        <p>Referer URL:  <strong>' . $useragent['referer'] . '</strong> </p>
                         <p>Site URL:  <strong>' . url('/') . '</strong> </p>
                         <p>Project SECURITY URL:  <strong>' . route('ps.admin.login') . '</strong> </p>
                     ';
@@ -243,7 +244,17 @@ trait Core {
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $headers .= 'To: ' . $to . ' <' . $to . '>' . "\r\n";
         $headers .= 'From: ' . $email . ' <' . $email . '>' . "\r\n";
-        @mail($to, $subject, $message, $headers);
+        // @mail($to, $subject, $message, $headers);
+        try{
+            Mail::send([], [], function ($message) use ($to, $email, $subject, $messagee){
+                $message->to($to)
+                ->from($email)
+                ->subject($subject)
+                ->setBody($message, 'text/html'); // for HTML rich messages
+            });
+        }catch(\Exception $e){
+
+        }
     }
 
 }
