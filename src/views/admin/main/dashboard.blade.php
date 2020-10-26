@@ -412,19 +412,15 @@
                                 <p>
                                     <i class="fas fa-file-alt"></i> Threat Type:
                                     @if ($log->type == 'SQLi')
-                                    <button class="btn btn-sm btn-primary btn-flat"><i class="fas fa-code"></i> <b>' .
-                                            $log->type . '</b></button>
+                                    <button class="btn btn-sm btn-primary btn-flat"><i class="fas fa-code"></i> <b>{{ $log->type }}</b></button>
                                     @elseif ($log->type == 'Bad Bot' || $log->type == 'Fake Bot' || $log->type ==
                                     'Missing User-Agent header' || $log->type == 'Missing header Accept' || $log->type
                                     == 'Invalid IP Address header')
-                                    <button class="btn btn-sm btn-danger btn-flat"><i class="fas fa-robot"></i> <b>' .
-                                            $log->type . '</b></button>
+                                    <button class="btn btn-sm btn-danger btn-flat"><i class="fas fa-robot"></i> <b>{{ $log->type }}</b></button>
                                     @elseif ($log->type == 'Proxy')
-                                    <button class="btn btn-sm btn-success btn-flat"><i class="fas fa-globe"></i> <b>' .
-                                            $log->type . '</b></button>
+                                    <button class="btn btn-sm btn-success btn-flat"><i class="fas fa-globe"></i> <b>{{ $log->type }}</b></button>
                                     @elseif ($log->type == 'Spammer')
-                                    <button class="btn btn-sm btn-warning btn-flat"><i class="fas fa-keyboard"></i> <b>'
-                                            . $log->type . '</b></button>
+                                    <button class="btn btn-sm btn-warning btn-flat"><i class="fas fa-keyboard"></i> <b>{{ $log->type }}</b></button>
                                     @else
                                     <button class="btn btn-sm btn-success btn-flat"><i class="fas fa-user-secret"></i>
                                         <b>Other</b></button>

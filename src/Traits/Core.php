@@ -156,6 +156,8 @@ trait Core {
 
         $check = DB::table($ltable)->where(['ip' => $this->getIP(), 'page' => $data['page'], 'type' => $type, 'date' => $data['date']])->count();
 
+
+        
         if($check <= 0){
             $data2 = $this->ipDetails($data['useragent']);
 
@@ -227,7 +229,7 @@ trait Core {
         // dd($setting);
         $email   = 'notifications@' . $_SERVER['SERVER_NAME'] . '';
         $to      = $setting->email;
-        $subject = 'Project SECURITY - ' . $type . '';
+        $subject = 'Vaults Security - ' . $type . '';
         $messagee = '
                         <p style="padding:0; margin:0 0 11pt 0;line-height:160%; font-size:18px;">Details of Log - ' . $type . '</p>
                         <p>IP Address: <strong>' . $this->getIP() . '</strong></p>
@@ -238,7 +240,7 @@ trait Core {
                         <p>Page:  <strong>' . $useragent['page'] . '</strong> </p>
                         <p>Referer URL:  <strong>' . $useragent['referer'] . '</strong> </p>
                         <p>Site URL:  <strong>' . url('/') . '</strong> </p>
-                        <p>Project SECURITY URL:  <strong>' . route('ps.admin.login') . '</strong> </p>
+                        <p>Vaults Security URL:  <strong>' . route('ps.admin.login') . '</strong> </p>
                     ';
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
