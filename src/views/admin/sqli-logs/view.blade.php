@@ -200,9 +200,9 @@
                     </div>
                     <div class="card-footer">
                         @if($common->isBanned($log->ip))
-                        <a href="{{ route('ps.admin.sqli-logs.ip-ban.delete', $common->getBannedId($log->ip)) }}" class="btn btn-flat btn-success"><i class="fas fa-ban"></i> Unban</a>
+                        <a href="{{ route('ps.admin.sqli-logs.unban-ip', $log->ip) }}" class="btn btn-flat btn-success"><i class="fas fa-ban"></i> Unban</a>
                         @else
-                        <a href="{{ route('ps.admin.sqli-logs.ip-ban') }}" class="btn btn-flat btn-warning"><i class="fas fa-ban"></i> Ban</a>
+                        <a href="{{ route('ps.admin.sqli-logs.ban-ip', $log->ip) }}" class="btn btn-flat btn-warning"><i class="fas fa-ban"></i> Ban</a>
                         @endif
                         <a href="{{ route('ps.admin.sqli-logs.delete', $log->id) }}" class="btn btn-flat btn-danger"><i class="fas fa-times"></i> Delete</a>
                     </div>

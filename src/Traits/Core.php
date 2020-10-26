@@ -221,7 +221,7 @@ trait Core {
     }
 
     public function psec_mail($type){
-
+// dd('dfdf');
         $useragent = $this->userAgentData();
         $setting = $this->getSetting();
         // dd($setting);
@@ -250,10 +250,11 @@ trait Core {
                 $message->to($to)
                 ->from($email)
                 ->subject($subject)
-                ->setBody($message, 'text/html'); // for HTML rich messages
+                ->setBody($messagee, 'text/html'); // for HTML rich messages
             });
+            dd('Mail sent to admin!');
         }catch(\Exception $e){
-
+            dd($e->getMessage());
         }
     }
 
